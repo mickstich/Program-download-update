@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+    <title>click</title>
+</head>
+<body>
+<h3>click to download the file</h3>
+<table  border="3" align="center" width="25%">
+     <tr>
+         <th>FILES</th>
+         <th>DOWNLOAD</th>
+    </tr>
+
+
+    {% for file in filelist %}
+    <tr>
+        <td>{{file}}</td>
+        <td>
+            <form action="{{url_for('download_file')}}" method="post">
+                <input type="hidden" name="filename" value='{{ file }}'>
+                <button>Download</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td>All files</td>
+
+        <td><a href="{{url_for("download_all")}}"><button>Download All</button> </a></td>
+    </tr>
+
+</table>
+</body>
+</html>

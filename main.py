@@ -40,17 +40,17 @@ def download():
     name = request.form.get("name")
     password = request.form.get("password")
     if not is_integer(password):
-          return redirect('/')
+         return redirect('/')
 
 
-#    all_users= db.session.query(usw).filter(usw.name == name, usw.password == password)
-#   print(all_users)
-#    invalid=True
-#    for row in all_users:
-#       print("ID:", row.name, "Name: ", row.password)
-#        invalid=False
-#   if invalid is True:
-#       return redirect('/')
+    all_users= db.session.query(usw).filter(usw.name == name, usw.password == password)
+    print(all_users)
+    invalid=True
+    for row in all_users:
+       print("ID:", row.name, "Name: ", row.password)
+       invalid=False
+    if invalid is True:
+        return redirect('/')
     filelist = os.listdir('./files/')
     return render_template('download.html', filelist=filelist)
 
